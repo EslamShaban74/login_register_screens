@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:login_register/modules/login_screen/login_screen.dart';
 
 void main() {
@@ -8,11 +9,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white24);
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       title: 'Login & Register',
+
       theme: ThemeData(
+
+
         primarySwatch: Colors.blue,
       ),
+
+      themeMode: ThemeMode.light,
       home: LoginScreen(),
     );
   }
