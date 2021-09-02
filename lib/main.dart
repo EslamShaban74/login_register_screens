@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Login & Register',
 
       theme: ThemeData(
+        hintColor: Colors.grey[300],
 
 
         primarySwatch: Colors.blue,
