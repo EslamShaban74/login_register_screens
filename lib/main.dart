@@ -11,17 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.white24);
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       title: 'Login & Register',
-
       theme: ThemeData(
         hintColor: Colors.grey[300],
-
-
         primarySwatch: Colors.blue,
-      ),
 
+      ),
       themeMode: ThemeMode.light,
       home: LoginScreen(),
     );
