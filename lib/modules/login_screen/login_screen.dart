@@ -84,6 +84,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
+
+
                     borderRadius: BorderRadius.circular(25.0),
                     borderSide: BorderSide(
                       color: Colors.white,
@@ -91,6 +93,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   prefixIcon: Icon(
+
                     Icons.lock_outline,
                   ),
                 ),
