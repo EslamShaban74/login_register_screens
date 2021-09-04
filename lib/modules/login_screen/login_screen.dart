@@ -3,12 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:login_register/modules/register_screen/register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      setState(() {});
+    });
+  }
+
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
+
+  FocusNode focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white24,
@@ -41,28 +59,36 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 40.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: TextFormField(
-                controller: emailController,
-                style: TextStyle(
-                  color: Colors.blue,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
+              child: Theme(
+                data:
+                    Theme.of(context).copyWith(primaryColor: Colors.redAccent),
+                child: TextFormField(
+                  controller: emailController,
+                  style: TextStyle(
+                    color: Colors.blue,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 2.0,
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'Email',
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                      ),
                     ),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.person_outline,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 2.0,
+                      ),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.person_outline,
+
+                    ),
                   ),
                 ),
               ),
@@ -84,8 +110,6 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-
-
                     borderRadius: BorderRadius.circular(25.0),
                     borderSide: BorderSide(
                       color: Colors.white,
@@ -93,7 +117,6 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   prefixIcon: Icon(
-
                     Icons.lock_outline,
                   ),
                 ),
@@ -203,10 +226,7 @@ class LoginScreen extends StatelessWidget {
                 Text('Don\'t have an account?'),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return RegisterScreen();
-                    }));
+                    Navigator.pushReplacementNamed(context, '/register');
                   },
                   child: Text(
                     'Sign Up',

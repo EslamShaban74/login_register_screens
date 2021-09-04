@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/modules/login_screen/login_screen.dart';
 import 'package:login_register/shared/components/components.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -6,6 +7,15 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/login');
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
@@ -48,7 +58,9 @@ class RegisterScreen extends StatelessWidget {
                 Text('Already have an account?'),
                 MaterialButton(
                   padding: EdgeInsets.symmetric(horizontal: 0.0),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
                   child: Text(
                     'Login here',
                     style: TextStyle(color: Colors.blue),

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+FocusNode focusNode = FocusNode();
+
 Widget buildTextFormField(String text, IconData prefix) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
+        autofocus: true,
+        focusNode: focusNode,
         style: TextStyle(
           color: Colors.blue,
         ),
