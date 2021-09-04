@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/login.dart';
 import 'package:login_register/modules/login_screen/login_screen.dart';
 import 'package:login_register/shared/components/components.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
+    focusNode.addListener(() {
+      setState(() {});
+    });
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -40,15 +57,15 @@ class RegisterScreen extends StatelessWidget {
                   Theme.of(context).textTheme.caption.copyWith(fontSize: 15.0),
             ),
             const SizedBox(height: 40.0),
-            buildTextFormField('Name', Icons.person),
+            InputField("Name", Icons.person_outline),
             const SizedBox(height: 20.0),
-            buildTextFormField('Email', Icons.email_outlined),
+            InputField("Email", Icons.email_outlined),
             const SizedBox(height: 20.0),
-            buildTextFormField('Phone', Icons.phone_android_sharp),
+            InputField('Phone', Icons.phone_android_sharp),
             const SizedBox(height: 20.0),
-            buildTextFormField('Password', Icons.lock_outline),
+            InputField('Password', Icons.lock_outline),
             const SizedBox(height: 20.0),
-            buildTextFormField('Confirm Password', Icons.lock_outline),
+            InputField('Confirm Password', Icons.lock_outline),
             const SizedBox(height: 60.0),
             buildDefaultButton('CREATE', Colors.blue[600]),
             const SizedBox(height: 60.0),

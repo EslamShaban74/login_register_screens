@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-FocusNode focusNode = FocusNode();
 
-Widget buildTextFormField(String text, IconData prefix) => Padding(
+
+Widget buildTextFormField(
+        {String text, IconData prefix, TextEditingController controller,FocusNode focusNode}) =>
+    Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
-        autofocus: true,
-        focusNode: focusNode,
+        controller: controller,
+        focusNode: focusNode??FocusNode,
         style: TextStyle(
           color: Colors.blue,
         ),
         decoration: InputDecoration(
             hintText: text,
+            fillColor: Colors.white,
+            filled: true,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50.0),
               borderSide: BorderSide(
@@ -27,6 +31,9 @@ Widget buildTextFormField(String text, IconData prefix) => Padding(
             ),
             prefixIcon: Icon(
               prefix,
+              color: focusNode.hasFocus || controller.text != ''
+                  ? Colors.blue
+                  : Colors.grey[300],
               //color: Colors.grey[200],
             )),
       ),

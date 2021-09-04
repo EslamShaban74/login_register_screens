@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:login_register/modules/register_screen/register_screen.dart';
+import 'package:login_register/shared/components/components.dart';
+
+import '../../login.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -26,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white24,
@@ -57,71 +59,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 40.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Theme(
-                data:
-                    Theme.of(context).copyWith(primaryColor: Colors.redAccent),
-                child: TextFormField(
-                  controller: emailController,
-                  style: TextStyle(
-                    color: Colors.blue,
-                  ),
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Email',
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 2.0,
-                      ),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.person_outline,
-
-                    ),
-                  ),
-                ),
-              ),
-            ),
+           InputField('Email', Icons.person_outline),
             const SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: TextFormField(
-                controller: passwordController,
-                style: TextStyle(
-                  color: Colors.blue,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 2.0,
-                    ),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.lock_outline,
-                  ),
-                ),
-              ),
-            ),
+            InputField('Password', Icons.lock_outline),
             const SizedBox(height: 10.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
