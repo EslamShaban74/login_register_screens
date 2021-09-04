@@ -15,13 +15,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-  FocusNode focusNode = FocusNode();
+  FocusNode nameFocusNode = FocusNode();
+  FocusNode emailFocusNode = FocusNode();
+  FocusNode phoneFocusNode = FocusNode();
+  FocusNode passwordFocusNode = FocusNode();
+  FocusNode confirmPasswordFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
-    focusNode.addListener(() {
+    nameFocusNode.addListener(() {
       setState(() {});
     });
+    emailFocusNode.addListener(() {
+      setState(() {});
+    });
+    phoneFocusNode.addListener(() {
+      setState(() {});
+    });
+    passwordFocusNode.addListener(() {
+      setState(() {});
+    });
+    confirmPasswordFocusNode.addListener(() {
+      setState(() {});
+    });
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -57,13 +74,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Theme.of(context).textTheme.caption.copyWith(fontSize: 15.0),
             ),
             const SizedBox(height: 40.0),
-            InputField("Name", Icons.person_outline),
+            buildTextFormField(
+              controller: nameController,
+              prefix: Icons.person_outline,
+              text: 'Name',
+              focusNode: nameFocusNode,
+            ),
             const SizedBox(height: 20.0),
-            InputField("Email", Icons.email_outlined),
+            buildTextFormField(
+              controller: emailController,
+              prefix: Icons.email_outlined,
+              text: 'Email',
+              focusNode: emailFocusNode,
+            ),
             const SizedBox(height: 20.0),
-            InputField('Phone', Icons.phone_android_sharp),
+            buildTextFormField(
+              controller: phoneController,
+              prefix: Icons.phone_android_sharp,
+              text: 'Phone',
+              focusNode: phoneFocusNode,
+            ),
             const SizedBox(height: 20.0),
-            InputField('Password', Icons.lock_outline),
+            buildTextFormField(
+              controller: passwordController,
+              prefix: Icons.lock_outline,
+              text: 'Confirm Password',
+              focusNode: confirmPasswordFocusNode,
+            ),
             const SizedBox(height: 20.0),
             InputField('Confirm Password', Icons.lock_outline),
             const SizedBox(height: 60.0),

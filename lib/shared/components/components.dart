@@ -8,7 +8,7 @@ Widget buildTextFormField(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
         controller: controller,
-        focusNode: focusNode??FocusNode,
+        focusNode: focusNode,
         style: TextStyle(
           color: Colors.blue,
         ),

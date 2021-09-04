@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:login_register/modules/register_screen/register_screen.dart';
 import 'package:login_register/shared/components/components.dart';
-
-import '../../login.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,7 +13,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    focusNode.addListener(() {
+    focusNodeEmail.addListener(() {
+      setState(() {});
+    });
+    focusNodePassword.addListener(() {
       setState(() {});
     });
   }
@@ -25,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var passwordController = TextEditingController();
 
-  FocusNode focusNode = FocusNode();
+  FocusNode focusNodeEmail = FocusNode();
+  FocusNode focusNodePassword = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -59,23 +60,18 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 40.0),
-           InputField('Email', Icons.person_outline),
-            const SizedBox(height: 20.0),
-            InputField('Password', Icons.lock_outline),
+            buildTextFormField(
+              focusNode: focusNodeEmail,
+              text: 'Email',
+              prefix: Icons.person_outline,
+              controller: emailController,
+            ),
             const SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    child: Text(
-                      'Forgot Password?',
-                    ),
-                    onTap: () {},
-                  ),
-                ],
-              ),
+            buildTextFormField(
+              focusNode: focusNodePassword,
+              text: 'Password',
+              prefix: Icons.lock_outline,
+              controller: passwordController,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
